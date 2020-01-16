@@ -15,6 +15,7 @@ export class AppComponent {
   isShow = false;
   constructor(private tokenStorageService: TokenStorageService) { }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 

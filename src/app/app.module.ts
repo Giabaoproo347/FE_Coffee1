@@ -51,6 +51,7 @@ import { BookNewComponent } from './component/public/book-new/book-new.component
 import { BookCategoryComponent } from './component/public/book-category/book-category.component';
 import { HeaderComponent } from './component/public/header/header.component';
 import { FooterComponent } from './component/public/footer/footer.component';
+
 import { PaymentCreateComponent } from './components/admin/payment/payment-create/payment-create.component';
 import { PaymentEditComponent } from './components/admin/payment/payment-edit/payment-edit.component';
 import { PaymentDeleteComponent } from './components/admin/payment/payment-delete/payment-delete.component';
@@ -81,6 +82,11 @@ import { ProductPictureEditComponent } from './components/admin/productPicture/p
 import { ProductPictureListComponent } from './components/admin/productPicture/product-picture-list/product-picture-list.component';
 import { ProductPictureDeleteComponent } from './components/admin/productPicture/product-picture-delete/product-picture-delete.component';
 import { ProductPictureDetailComponent } from './components/admin/productPicture/product-picture-detail/product-picture-detail.component';
+import { CategoriesCreateComponent } from './components/admin/categories/categories-create/categories-create.component';
+import { CategoriesEditComponent } from './components/admin/categories/categories-edit/categories-edit.component';
+import { CategoriesDeleteComponent } from './components/admin/categories/categories-delete/categories-delete.component';
+import { CategoriesDetailComponent } from './components/admin/categories/categories-detail/categories-detail.component';
+import { CategoriesListComponent } from './components/admin/categories/categories-list/categories-list.component';
 
 @NgModule({
   declarations: [
@@ -159,6 +165,11 @@ import { ProductPictureDetailComponent } from './components/admin/productPicture
     ProductPictureListComponent,
     ProductPictureDeleteComponent,
     ProductPictureDetailComponent,
+    CategoriesCreateComponent,
+    CategoriesEditComponent,
+    CategoriesDeleteComponent,
+    CategoriesDetailComponent,
+    CategoriesListComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ export class BookNewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookService.getBookListByDate().subscribe(next => {
+    this.bookService.getBookList().subscribe(next => {
       this.bookList = next;
       console.log(next);
     }, err =>

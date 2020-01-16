@@ -18,8 +18,8 @@ export class BookCategoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  getBookByCategory(id) {
-    this.bookService.getBookListByCategory(id).subscribe(next => this.bookListByCategory = next);
-  }
+  // getBookByCategory(id) {
+  //   this.bookService.getBookListByCategory(id).subscribe(next => this.bookListByCategory = next);
+  // }
 
 }

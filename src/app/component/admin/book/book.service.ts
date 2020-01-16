@@ -16,17 +16,17 @@ export class BookService {
     return this.http.get<IBook[]>(this.url);
   }
 
-  getBookListByCategory(id: number): Observable<any[]> {
-    return this.http.get<any[]>(this.url + '/category/' + id);
-  }
+  // getBookListByCategory(id: number): Observable<any[]> {
+  //   return this.http.get<any[]>(this.url + '/category/' + id);
+  // }
 
-  getBookListByAuthor(id: number): Observable<any[]> {
-    return this.http.get<any[]>(this.url + '/author/' + id);
-  }
+  // getBookListByAuthor(id: number): Observable<any[]> {
+  //   return this.http.get<any[]>(this.url + '/author/' + id);
+  // }
 
-  getBookListByDate(): Observable<IBook[]> {
-    return this.http.get<IBook[]>(this.url + '/date-create');
-  }
+  // getBookListByDate(): Observable<IBook[]> {
+  //   return this.http.get<IBook[]>(this.url + '/date-create');
+  // }
 
   getBook(id: number): Observable<IBook> {
     return this.http.get<IBook>(this.url + '/' + id);

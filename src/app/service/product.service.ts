@@ -40,7 +40,7 @@ export class ProductService {
       image: product.image,
       productPicture: product.productPicture,
       promotion: product.promotion,
-      category: product.category,
+      category: product.categories,
     });
   }
 
@@ -52,7 +52,7 @@ export class ProductService {
       image: product.image,
       bookPicture: product.productPicture,
       promotion: product.promotion,
-      category: product.category,
+      category: product.categories,
     });
   }
 

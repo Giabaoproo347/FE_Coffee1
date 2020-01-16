@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bookService.getBookListByDate().subscribe(next => {
+    this.bookService.getBookList().subscribe(next => {
       this.bookListNew = next;
       console.log(next);
     }, err =>
