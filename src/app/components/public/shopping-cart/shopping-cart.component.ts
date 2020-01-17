@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+import {Observable, Observer, Subscription} from 'rxjs';
 import {Product} from '../../../model/product.model';
 import {ShoppingCart} from '../../../model/shopping-cart.model';
 import {ProductService} from '../../../service/product.service';
@@ -30,6 +30,18 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cart = this.shoppingCartService.get();
     this.cartSubscription = this.cart.subscribe((cart) => {
       this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+    });
+  }
+
+  public productInCart(product: Product): boolean {
+    return Observable.create((obs: Observer<boolean>) => {
+      const sub = this.shoppingCartService
+        .get()
+        .subscribe((cart) => {
+          obs.next(cart.items.some((i) => i.productId === product.id));
+          obs.complete();
+        });
+      sub.unsubscribe();
     });
   }
 

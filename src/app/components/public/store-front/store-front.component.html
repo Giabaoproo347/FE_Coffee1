@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="small-12 medium-4 columns">
+  <div class="text-info text-md-center">
     <app-shopping-cart></app-shopping-cart>
   </div>
   <div class="row">
@@ -9,17 +9,17 @@
              [src]="product.image"
              alt="Card image cap">
         <div class="card-body">
-          <p class="card-text">{{product.name}}</p>
-          <p class="card-text">{{product.price | currency: 'VND': true}}</p>
+          <h4 class="card-title text-center text-danger">{{product.name}}</h4>
+          <p class="card-text text-center text-info">{{product.price | currency: 'VND': true}}</p>
           <p>
             <button type="button"
-                    class="button success large js-btn-add"
-                    (click)="addProductToCart(product, 1)">Add To Cart
+                    class="btn btn-outline-primary"
+                    (click)="addProductToCart(product, 1)">Thêm vào giỏ
             </button>
             <button type="button"
-                    class="button small js-btn-remove"
+                    class="btn btn-outline-danger"
                     *ngIf="productInCart(product) | async"
-                    (click)="removeProductFromCart(product, 1)">Remove item from cart
+                    (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
             </button>
           </p>
         </div>
