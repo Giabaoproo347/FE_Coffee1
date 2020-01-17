@@ -70,10 +70,11 @@ import {PromotionCreateComponent} from '../components/admin/promotion/promotion-
 import {PromotionEditComponent} from '../components/admin/promotion/promotion-edit/promotion-edit.component';
 import {PromotionDeleteComponent} from '../components/admin/promotion/promotion-delete/promotion-delete.component';
 import {PromotionDetailComponent} from '../components/admin/promotion/promotion-detail/promotion-detail.component';
+import {AppHompageTrueComponent} from '../components/public/app-hompage-true/app-hompage-true.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: AppHompageTrueComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
