@@ -87,6 +87,9 @@ import { CategoriesEditComponent } from './components/admin/categories/categorie
 import { CategoriesDeleteComponent } from './components/admin/categories/categories-delete/categories-delete.component';
 import { CategoriesDetailComponent } from './components/admin/categories/categories-detail/categories-detail.component';
 import { CategoriesListComponent } from './components/admin/categories/categories-list/categories-list.component';
+import { AppHeaderTrueComponent } from './components/public/app-header-true/app-header-true.component';
+import { AppFooterTrueComponent } from './components/public/app-footer-true/app-footer-true.component';
+import { AppHompageTrueComponent } from './components/public/app-hompage-true/app-hompage-true.component';
 
 @NgModule({
   declarations: [
@@ -170,6 +173,9 @@ import { CategoriesListComponent } from './components/admin/categories/categorie
     CategoriesDeleteComponent,
     CategoriesDetailComponent,
     CategoriesListComponent,
+    AppHeaderTrueComponent,
+    AppFooterTrueComponent,
+    AppHompageTrueComponent,
   ],
   imports: [
     BrowserModule,
