@@ -90,6 +90,15 @@ import { CategoriesListComponent } from './components/admin/categories/categorie
 import { AppHeaderTrueComponent } from './components/public/app-header-true/app-header-true.component';
 import { AppFooterTrueComponent } from './components/public/app-footer-true/app-footer-true.component';
 import { AppHompageTrueComponent } from './components/public/app-hompage-true/app-hompage-true.component';
+import {CheckoutComponent} from './components/public/checkout/checkout.component';
+import {OrderConfirmationComponent} from './components/public/order-comfirmation/order-comfirmation.component';
+import {ShoppingCartComponent} from './components/public/shopping-cart/shopping-cart.component';
+import {StoreFrontComponent} from './components/public/store-front/store-front.component';
+import {ProductDetail1Component} from './components/public/product-detail/product-detail.component';
+import {ProductService} from './service/product.service';
+import {OrderDetailService} from './service/order-detail.service';
+import {StorageService} from './service/storage.service';
+import {ShoppingCartService} from './service/shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -176,6 +185,11 @@ import { AppHompageTrueComponent } from './components/public/app-hompage-true/ap
     AppHeaderTrueComponent,
     AppFooterTrueComponent,
     AppHompageTrueComponent,
+    CheckoutComponent,
+    OrderConfirmationComponent,
+    ProductDetail1Component,
+    ShoppingCartComponent,
+    StoreFrontComponent
   ],
   imports: [
     BrowserModule,
@@ -185,7 +199,16 @@ import { AppHompageTrueComponent } from './components/public/app-hompage-true/ap
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,
+  ProductService,
+  OrderDetailService,
+  StorageService, {
+    provide: StorageService, useClass: StorageService
+    }, {
+    deps: [StorageService, ProductService, OrderDetailService],
+      provide: ShoppingCartService,
+      useClass: ShoppingCartService
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

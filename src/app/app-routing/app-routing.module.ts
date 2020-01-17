@@ -71,6 +71,11 @@ import {PromotionEditComponent} from '../components/admin/promotion/promotion-ed
 import {PromotionDeleteComponent} from '../components/admin/promotion/promotion-delete/promotion-delete.component';
 import {PromotionDetailComponent} from '../components/admin/promotion/promotion-detail/promotion-detail.component';
 import {AppHompageTrueComponent} from '../components/public/app-hompage-true/app-hompage-true.component';
+import {CheckoutComponent} from '../components/public/checkout/checkout.component';
+import {OrderConfirmationComponent} from '../components/public/order-comfirmation/order-comfirmation.component';
+import {StoreFrontComponent} from '../components/public/store-front/store-front.component';
+import {ProductDetail1Component} from '../components/public/product-detail/product-detail.component';
+import {ShoppingCartComponent} from '../components/public/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -144,7 +149,26 @@ const routes: Routes = [
   {path: 'publishing-detail/:id', component: PublishingDetailComponent},
   {path: 'book-public', component: BookPublicComponent},
   {path: 'book-new', component: BookNewComponent},
-  {path: '', redirectTo: '/book-public', pathMatch: 'full'},
+  // {path: '', redirectTo: '/book-public', pathMatch: 'full'},
+  {
+    path: 'checkout',
+    component: CheckoutComponent
+  }, {
+    path: 'confirmed',
+    component: OrderConfirmationComponent
+  }, {
+    path: '**',
+    component: StoreFrontComponent
+  },
+  {
+    path: 'product-detail/:id',
+    component: ProductDetail1Component
+  },
+  {
+    path: 'cart',
+    component: ShoppingCartComponent
+  }
+
 ];
 
 @NgModule({

@@ -59,4 +59,12 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id);
   }
+
+  public editProduct1(product: Product): Observable<any> {
+    return this.http.put(`${this.url}/${product.id}`, product);
+  }
+
+  public deleteProduct1(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
