@@ -25,8 +25,10 @@ export class OrderDetailEditComponent implements OnInit {
 
   ngOnInit() {
     this.orderDetailForm = this.fb.group({
+      name: ['', [Validators.required]],
       salePrice: ['', [Validators.required]],
-      quantity: ['', [Validators.required]]
+      quantity: ['', [Validators.required]],
+      description: ['', [Validators.required]]
     });
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);

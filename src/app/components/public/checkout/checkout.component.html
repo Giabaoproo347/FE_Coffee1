@@ -1,77 +1,71 @@
-<div class="row">
-  <div class="medium-4 columns">
-    <h2>
-      <i class="material-icons">shopping_basket</i>
-      <span>Checkout</span>
-    </h2>
-  </div>
-  <div class="medium-4 columns text-right">
-    <h4>
-      Order Total
-      <span class="text--red text--bold js-gross-total">{{(cart | async).grossTotal | currency:'GBP':true}}</span>
-    </h4>
-  </div>
-  <div class="medium-4 columns text-right">
-    <h5 class="text--red"
-        *ngIf="(cart | async).orderDetailId === undefined">Please select a delivery option...</h5>
-    <a class="success button large"
-       *ngIf="(cart | async).orderDetailId !== undefined"
-       routerLink="/confirmed">Purchase Order</a>
-  </div>
-  <hr/>
-</div>
-<div class="row">
-  <div class="medium-8 columns">
-    <h4>Delivery 1 of 1</h4>
-    <small>Dispatching to the UK....</small>
-    <div class="row checkout_row"
-         *ngFor="let item of cartItems">
-      <div class="medium-2 columns text-center">
-        <img src="./assets/{{item.product.id}}.jpg"
-             class="product_image"/>
-      </div>
-      <div class="medium-5 columns">
-        <span class="text--bold js-product-name">{{item.product.name}}</span>
-        <p class="js-product-desc">{{item.product.description}}</p>
-      </div>
-      <div class="medium-2 columns text-right">
-        <p class="text--red js-product-costs">{{item.quantity}} x {{item.product.price | currency:'GBP':true}}</p>
-      </div>
-      <div class="medium-3 columns text-right">
-        <p class="text--bold text--red js-product-total">{{item.totalCost | currency:'GBP':true}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="medium-4 columns">
-    <h4>Delivery Options</h4>
+<div class="container ">
+  <div class="table ">
+    <div class="row">
+      <div class="col-md-8">
+        <tr class="btn-primary text-center">
+          <th>Sản phẩm</th>
+          <th>Hình ảnh</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Tổng cộng</th>
+        </tr>
 
-    <div class="row delivery-option"
-         *ngFor="let option of orderDetail | async">
-      <div class="small-1 columns">
-        <input type="radio"
-               name="delivery_option"
-               id="{{option.name}}"
-               [checked]="option.id === (cart | async).orderDetailId"
-               (click)="setOrderDetail(option)">
+        <tr *ngFor="let item of cartItems" class="text-center">
+          <td class="text-primary font-weight-bold">{{item.product.name}}</td>
+          <td><img [src]="item.product.image" style="height: 200px"></td>
+          <td>{{item.product.price | currency: 'VND'}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.totalCost | currency: 'VND'}}</td>
+        </tr>
       </div>
-      <div class="small-9 columns">
-        <label class="text--bold js-option-name" for="{{option.name}}" (click)="setOrderDetail(option)">{{option.name}}</label>
-      </div>
-      <div class="small-2 columns">
-        <p class="text--bold text--red js-option-price">{{option.salePrice | currency:'GBP':true}}</p>
-      </div>
-      <div class="small-12 columns">
-        <p>{{option.description}}</p>
-      </div>
-    </div>
-  </div>
 
+      <div class="col-md-4">
+        <h4 class="btn btn-success text-center font-weight-bold" style="width: 300px">Mời bạn chọn size</h4>
+        <div *ngFor="let option of orderDetail | async">
+          <div>
+            <input type="radio"
+                   id="{{option.name}}"
+                   [checked]="option.id === (cart | async).id"
+                   (click)="setOrderDetail(option)">
+            <label class="text-primary p-2 m-2" for="{{option.name}}"
+                   (click)="setOrderDetail(option)">{{option.name}}</label>
+            <p class=" text-left">{{option.salePrice * itemCount | currency:'VND':true}}
+              ({{option.salePrice | currency: 'VND'}} trên mỗi sản phẩm)</p>
+          </div>
+        </div>
+        <div><h4>Lưu ý:</h4></div>
+        <div>
+          <h6>Với hóa đơn trên
+            <mark><span class="text-danger">100.000đ</span></mark>
+            bạn sẽ được miễn phí ship trong bán kính 5km
+          </h6>
+        </div>
+        <br/>
 
-  <div class="row">
-    <div class="small-10 columns small-centered">
-      <a class="warning button expanded"
-         routerLink="/">Continue Shopping</a>
+        <div class="col-md-12">
+          <h4>
+            Tổng hóa đơn:
+            <mark><span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span></mark>
+          </h4>
+        </div>
+        <br/>
+
+        <div class="col-md-12">
+          <h5 class="btn btn-info" style="width: 260px"
+              *ngIf="(cart | async).id === undefined">Bạn hãy chọn size trước nhé</h5>
+          <a class="btn btn-success" style="width: 260px"
+             *ngIf="(cart | async).id !== undefined"
+             routerLink="/confirmed">Tiến hành thanh toán</a>
+        </div>
+        <h5 style="margin-left: 130px">or</h5>
+        <div class="row p-2">
+          <div class="text-center">
+            <a class="btn btn-warning" style="width: 300px"
+               routerLink="/home">Tiếp tục mua hàng</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>

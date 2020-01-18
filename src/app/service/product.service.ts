@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   getProductListByCategory(id: number): Observable<any[]> {
-    return this.http.get<any[]>(this.url + '/category/' + id);
+    return this.http.get<any[]>(this.url + '/categories/' + id);
   }
 
   getProductListByPromotion(id: number): Observable<any[]> {
@@ -67,4 +67,6 @@ export class ProductService {
   public deleteProduct1(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+
 }

@@ -99,6 +99,7 @@ import {ProductService} from './service/product.service';
 import {OrderDetailService} from './service/order-detail.service';
 import {StorageService} from './service/storage.service';
 import {ShoppingCartService} from './service/shopping-cart.service';
+import { ProductCategoryComponent } from './components/public/product-category/product-category.component';
 
 @NgModule({
   declarations: [
@@ -189,7 +190,8 @@ import {ShoppingCartService} from './service/shopping-cart.service';
     OrderConfirmationComponent,
     ProductDetail1Component,
     ShoppingCartComponent,
-    StoreFrontComponent
+    StoreFrontComponent,
+    ProductCategoryComponent
   ],
   imports: [
     BrowserModule,
