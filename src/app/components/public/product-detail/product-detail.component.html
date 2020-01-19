@@ -1,123 +1,39 @@
-<div class="container">
-  <div class="row m-4">
-    <div class="col-sm-4">
-  <span>
-    <img src="http://hb624.giaodienwebsite.top/wp-content/uploads/2018/11/orion-%C4%91%C3%A1-xay-30k.jpg">
-  </span>
+<div class="container ">
+  <div class="row p-2" *ngIf="product">
+    <div class="col-md-4">
+      <img [src]="product.image" class=" p-2 m-2 float-right" style="width: 330px">
     </div>
-<!---->
-    <div class="col-sm-4">
-      <div>
-        <h3 class="text-left">ORION ĐÁ XAY</h3>
-        <hr width="100%" align="left"/>
-        <h4>30000đ</h4>
-        <br>
-        Đặc tính:
-        <br>
-        – Cappuccino chocolate với hương thơm nhẹ nhàng, tinh tế của cà phê và mùi vị hấp dẫn rất đặc trưng của cà phê
-        phong cách Ý.
-        <br>
-        – Cappuccino chocolate thơm ngon nhất, cùng bí quyết khác biệt của café tươi tạo ra sản phẩm G7 Cappuccino
-        Hazelnut đầy cá tính của phái đẹp.
-        <br/><br/>
-        <hr width="100%"/>
-        <input class="btn btn-info" value="({{itemCount}} sản phẩm)" style="width: 40%" disabled>
-        <span class="text--red text--bold js-cart-total m-2">{{(cart | async).grossTotal | currency:'VND':true}}</span>
-<!--            <button  class="btn btn-danger" (click)="addProductToCart(product1, 1)">Thêm vào giỏi hàng</button>-->
-        <br/>
-        <button class="btn btn-success m-2"
-                [attr.disabled]="itemCount === 0 ? true : null"
-                routerLink="/checkout">Thanh toán
+    <div class="col-md-4" style="margin-left: 30px">
+      <h3 class="text-info p-2 m-2">{{product.name}}</h3>
+      <hr width="100%" size="5px" align="left" class="text-primary"/>
+      <h5 class="text-primary">{{product.price | currency: 'VND'}}</h5>
+      <h6 class="text-primary">Đặc tính:</h6>
+      <span class="text-secondary">{{product.description}}</span>
+      <br/><br/>
+      <h6>
+        Giỏ hàng của bạn đang có
+        <mark class="text-danger">{{itemCount}} sản phẩm</mark>
+        <!--        <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>-->
+      </h6>
+
+      <p>
+        <button type="button"
+                class="btn btn-outline-primary"
+                (click)="addProductToCart(product, 1)">Thêm sản phẩm này
         </button>
-        <button class="btn btn-danger m-2"
-                (click)="emptyCart()"
-                [attr.disabled]="itemCount === 0 ? true : null">
-          Xóa hết sản phẩm
+        <button type="button"
+                class="btn btn-outline-danger"
+                *ngIf="productInCart(product) | async"
+                (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
         </button>
-  </div>
-</div>
-<!---->
-<div class="col-sm-4 ">
-  <h4 align="center">Danh mục các sản phẩm</h4>
-  <br/>
-  <div class="btn-group m-3">
-    <button type="button" class="btn btn-info" style="width: 300px">Cà phê</button>
-    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Cafe sinh tố đá</a>
-      <a class="dropdown-item" href="#">Cà phê xay</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </div>
-  <br/>
-  <div class="btn-group m-3">
-    <button type="button" class="btn btn-info" style="width: 300px">Sinh tố</button>
-    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Sinh tố</a>
-      <a class="dropdown-item" href="#">Cà phê xay</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </div>
-  <br/>
-  <div class="btn-group m-3">
-    <button type="button" class="btn btn-info" style="width: 300px">Trà sữa</button>
-    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Cafe sinh tố đá</a>
-      <a class="dropdown-item" href="#">Cà phê xay</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </div>
-<!---->
-  <br/>
-  <div class="btn-group m-3">
-    <button type="button" class="btn btn-info" style="width: 300px">Điểm tâm</button>
-    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Cafe sinh tố đá</a>
-      <a class="dropdown-item" href="#">Cà phê xay</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </div>
-<!---->
-  <br/>
-  <div class="btn-group m-3">
-    <button type="button" class="btn btn-info" style="width: 300px">Điểm tâm</button>
-    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Cafe sinh tố đá</a>
-      <a class="dropdown-item" href="#">Cà phê xay</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="localhost:4200/checkout">Separated link</a>
+      </p>
+      <hr width="100%" size="5px" align="left" class="text-primary"/>
+      <h6>Hãy ghé thăm fanpage của chúng tôi nhé</h6>
+      <span><a class="text-primary m-3" href="http://www.facebook.com/nguyenkhacgia.bao" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a></span>
+      <span><a class="text-info m-3" href="https://twitter.com/TheCoffeeBean" target="_blank"><i class="fa fa-twitter-square  fa-3x"></i></a></span>
+      <span><a class="text-primary m-3"><i class="fa fa-envelope-square fa-3x" target="_blank"></i></a></span>
+      <span><a class="text-danger m-3" href="https://www.coffeebean.com/" target="_blank"><i class="fa fa-google-plus-square fa-3x"></i></a></span>
     </div>
   </div>
 </div>
-</div>
-</div>
-<br/>
-<h1>This is detail</h1>
+

@@ -90,7 +90,7 @@ const routes: Routes = [
   {path: 'product-create', component: ProductCreateComponent},
   {path: 'product-edit/:id', component: ProductEditComponent},
   {path: 'product-delete/:id', component: ProductDeleteComponent},
-  {path: 'product-detail/:id', component: ProductDetailComponent},
+  {path: 'product-detail/:id', component: ProductDetail1Component},
   {path: 'categories-list', component: CategoriesListComponent},
   {path: 'categories-create', component: CategoriesCreateComponent},
   {path: 'categories-edit/:id', component: CategoriesEditComponent},
