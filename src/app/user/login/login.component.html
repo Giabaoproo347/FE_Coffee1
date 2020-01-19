@@ -27,7 +27,7 @@
           role="alert"
           *ngIf="f.submitted && username.invalid"
         >
-          Username is required!
+          Tài khoản không được để trống
         </div>
       </div>
       <div class="form-group">
@@ -46,9 +46,9 @@
           role="alert"
           *ngIf="f.submitted && password.invalid"
         >
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            Mật khẩu tối thiểu 6 ký tự
           </div>
         </div>
       </div>
@@ -63,13 +63,13 @@
           role="alert"
           *ngIf="f.submitted && isLoginFailed"
         >
-          Login failed: {{ errorMessage }}
+          Đăng nhập thất bại: {{ errorMessage }}
         </div>
       </div>
     </form>
 
     <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
+      Bạn đã đăng nhập với quyền {{ roles }}.
     </div>
   </div>
 </div>
