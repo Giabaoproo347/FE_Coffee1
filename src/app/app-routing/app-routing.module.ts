@@ -76,6 +76,8 @@ import {OrderConfirmationComponent} from '../components/public/order-comfirmatio
 import {StoreFrontComponent} from '../components/public/store-front/store-front.component';
 import {ProductDetail1Component} from '../components/public/product-detail/product-detail.component';
 import {ShoppingCartComponent} from '../components/public/shopping-cart/shopping-cart.component';
+import {ProductCategoryComponent} from '../components/public/product-category/product-category.component';
+import {ProductPromotionComponent} from '../components/public/product-promotion/product-promotion.component';
 
 
 const routes: Routes = [
@@ -116,6 +118,8 @@ const routes: Routes = [
   {path: 'promotion-edit/:id', component: PromotionEditComponent},
   {path: 'promotion-delete/:id', component: PromotionDeleteComponent},
   {path: 'promotion-detail/:id', component: PromotionDetailComponent},
+  {path: 'product-categories/:id', component: ProductCategoryComponent},
+  {path: 'product-promotion/:id', component: ProductPromotionComponent},
 
   {path: 'book-list', component: BookListComponent},
   {path: 'book-create', component: BookCreateComponent},

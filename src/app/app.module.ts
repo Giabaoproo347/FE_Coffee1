@@ -100,6 +100,7 @@ import {OrderDetailService} from './service/order-detail.service';
 import {StorageService} from './service/storage.service';
 import {ShoppingCartService} from './service/shopping-cart.service';
 import { ProductCategoryComponent } from './components/public/product-category/product-category.component';
+import { ProductPromotionComponent } from './components/public/product-promotion/product-promotion.component';
 
 @NgModule({
   declarations: [
@@ -191,7 +192,8 @@ import { ProductCategoryComponent } from './components/public/product-category/p
     ProductDetail1Component,
     ShoppingCartComponent,
     StoreFrontComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    ProductPromotionComponent
   ],
   imports: [
     BrowserModule,

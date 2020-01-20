@@ -1,28 +1,29 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../../../model/product.model';
-import {ProductService} from '../../../service/product.service';
-import {AppComponent} from '../../../app.component';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Observable, Observer} from 'rxjs';
-import {ShoppingCartService} from '../../../service/shopping-cart.service';
 import {Categories} from '../../../model/categories.model';
+import {Observable, Observer} from 'rxjs';
+import {ProductService} from '../../../service/product.service';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CategoriesService} from '../../../service/categories.service';
+import {ShoppingCartService} from '../../../service/shopping-cart.service';
+import {Promotion} from '../../../model/promotion.model';
+import {PromotionService} from '../../../service/promotion.service';
 
 @Component({
-  selector: 'app-product-category',
-  templateUrl: './product-category.component.html',
-  styleUrls: ['./product-category.component.css']
+  selector: 'app-product-promotion',
+  templateUrl: './product-promotion.component.html',
+  styleUrls: ['./product-promotion.component.css']
 })
-export class ProductCategoryComponent implements OnInit {
+export class ProductPromotionComponent implements OnInit {
 
-  productListByCategory: Product[];
-  categories: Categories;
+  productListPromotion: Product[];
+  promotion: Promotion;
   public products: Observable<Product[]>;
 
   constructor(private productService: ProductService,
               private router: Router,
               private route: ActivatedRoute,
-              private categoriesService: CategoriesService,
+              private promotionService: PromotionService,
               private shoppingCartService: ShoppingCartService
   ) {
   }
@@ -30,13 +31,13 @@ export class ProductCategoryComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(param => {
       const id = param.id;
-      this.categoriesService.getCategories(id).subscribe(nextCategory => {
-        this.categories = nextCategory;
-        this.productService.getProductListByCategory(id).subscribe(next => {
-          this.productListByCategory = next;
+      this.promotionService.getPromotion(id).subscribe(nextPromotion => {
+        this.promotion = nextPromotion;
+        this.productService.getProductListByPromotion(id).subscribe(next => {
+          this.productListPromotion = next;
         }, error => (console.log(error)));
-      }, errorCategory => {
-        console.log(errorCategory);
+      }, errorPromotion => {
+        console.log(errorPromotion);
       });
     });
 
