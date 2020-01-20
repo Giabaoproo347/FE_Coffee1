@@ -50,6 +50,8 @@ export class ProductCreateComponent implements OnInit {
       price: ['', [Validators.required]],
       description: ['', [Validators.required]],
       image: ['', [Validators.required]],
+      image2: ['', [Validators.required]],
+      image3: ['', [Validators.required]],
       promotion: [''],
       categories: ['']
     });

@@ -45,6 +45,8 @@ export class ProductEditComponent implements OnInit {
       price: ['', [Validators.required]],
       name: ['', [Validators.required]],
       image: ['', [Validators.required]],
+      image2: ['', [Validators.required]],
+      image3: ['', [Validators.required]],
       description: ['', [Validators.required]],
       categories: [''],
       promotion: ['']
