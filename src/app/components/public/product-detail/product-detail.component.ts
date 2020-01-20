@@ -18,6 +18,7 @@ export class ProductDetail1Component implements OnInit {
   public cart: Observable<ShoppingCart>;
   public itemCount: number;
   private cartSubscription: Subscription;
+  public products: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
@@ -25,7 +26,8 @@ export class ProductDetail1Component implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private  app: AppComponent,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private productsService: ProductService
   ) {
   }
 
@@ -47,6 +49,7 @@ export class ProductDetail1Component implements OnInit {
     this.cartSubscription = this.cart.subscribe((cart) => {
       this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
     });
+    this.products = this.productsService.getProductList();
   }
 
   public addProductToCart(product: Product): void {

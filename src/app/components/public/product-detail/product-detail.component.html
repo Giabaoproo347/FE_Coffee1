@@ -1,12 +1,15 @@
-<div class="container ">
-  <div class="row p-2" *ngIf="product">
-    <div class="col-md-4">
+<div class="container-fluid ">
+  <div class="row p-2">
+
+
+    <div class="col-md-4" *ngIf="product">
       <img [src]="product.image" class=" p-2 m-2 float-right" style="width: 330px">
     </div>
+
     <div class="col-md-4" style="margin-left: 30px">
-      <h3 class="text-info p-2 m-2">{{product.name}}</h3>
+      <h3 class="text-primary p-2 m-2">{{product.name}}</h3>
       <hr width="100%" size="5px" align="left" class="text-primary"/>
-      <h5 class="text-primary">{{product.price | currency: 'VND'}}</h5>
+      <h5 class="text-danger">{{product.price | currency: 'VND'}}</h5>
       <h6 class="text-primary">Đặc tính:</h6>
       <span class="text-secondary">{{product.description}}</span>
       <br/><br/>
@@ -18,22 +21,49 @@
 
       <p>
         <button type="button"
-                class="btn btn-outline-primary"
+                class="btn btn-outline-primary "
                 (click)="addProductToCart(product, 1)">Thêm sản phẩm này
         </button>
         <button type="button"
-                class="btn btn-outline-danger"
+                class="btn btn-outline-danger ml-2"
                 *ngIf="productInCart(product) | async"
                 (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
         </button>
+        <button type="button" class="btn btn-outline-info ml-2" *ngIf="productInCart(product) | async"
+        routerLink="/checkout">
+          Giỏ hàng
+        </button>
       </p>
-      <hr width="100%" size="5px" align="left" class="text-primary"/>
-      <h6>Hãy ghé thăm fanpage của chúng tôi nhé</h6>
-      <span><a class="text-primary m-3" href="http://www.facebook.com/nguyenkhacgia.bao" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a></span>
-      <span><a class="text-info m-3" href="https://twitter.com/TheCoffeeBean" target="_blank"><i class="fa fa-twitter-square  fa-3x"></i></a></span>
+      <hr width="100%" size="5px" align="center" class="text-primary"/>
+      <h6>Hãy ghé thăm fanpage của chúng tôi ở đây bạn nhé!</h6>
+      <span><a class="text-primary m-3" href="http://www.facebook.com/nguyenkhacgia.bao" target="_blank"><i
+        class="fa fa-facebook-square fa-3x"></i></a></span>
+      <span><a class="text-info m-3" href="https://twitter.com/TheCoffeeBean" target="_blank"><i
+        class="fa fa-twitter-square  fa-3x"></i></a></span>
       <span><a class="text-primary m-3"><i class="fa fa-envelope-square fa-3x" target="_blank"></i></a></span>
-      <span><a class="text-danger m-3" href="https://www.coffeebean.com/" target="_blank"><i class="fa fa-google-plus-square fa-3x"></i></a></span>
+      <span><a class="text-danger m-3" href="https://www.coffeebean.com/" target="_blank"><i
+        class="fa fa-google-plus-square fa-3x"></i></a></span>
+    </div>
+
+    <div class="col-md-3 m-2 p-2">
+      <div class="text-body align-text-bottom">
+        <h4 align="center" class="text-primary mb-2">SẢN PHẨM LIÊN QUAN</h4>
+        <div *ngFor="let p of products | async">
+          <div class="row mb-3 mt-3">
+            <div class="col-md-3 ">
+              <img [src]="p.image" style="height: 125px" routerLink="/product-detail/{{p.id}}">
+            </div>
+
+            <div class="col-md-7 ml-3">
+              <h5 class="text-info" routerLink="/product-detail/{{p.id}}">{{p.name}}</h5>
+              <h6 class="text-danger">{{p.price | currency: 'VND'}}</h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
-</div>
 
