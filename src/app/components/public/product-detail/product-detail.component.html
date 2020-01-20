@@ -1,9 +1,29 @@
 <div class="container-fluid ">
-  <div class="row p-2">
+  <div class="row p-3">
 
 
     <div class="col-md-4" *ngIf="product">
-      <img [src]="product.image" class=" p-2 m-2 float-right" style="width: 330px">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active ml-5 mt-2">
+            <img [src]="product.image" style="height: 444px" alt="First slide">
+          </div>
+          <div class="carousel-item ml-5 mt-2">
+            <img [src]="product.image2" style="height: 444px" alt="Second slide">
+          </div>
+          <div class="carousel-item ml-5 mt-2">
+            <img [src]="product.image3" style="height: 444px" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
 
     <div class="col-md-4" style="margin-left: 30px">
@@ -30,7 +50,7 @@
                 (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
         </button>
         <button type="button" class="btn btn-outline-info ml-2" *ngIf="productInCart(product) | async"
-        routerLink="/checkout">
+                routerLink="/checkout">
           Giỏ hàng
         </button>
       </p>
@@ -66,4 +86,4 @@
 
     </div>
   </div>
-
+</div>
